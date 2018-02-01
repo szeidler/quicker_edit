@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Attaches the quicker_edit javascript file to quickedit fields.
+ *
+ * Implements hook_preprocess_field().
+ */
+function quicker_edit_preprocess_field(&$variables) {
+  // If the quickedit attribute is available, we can assume, that it is a
+  // quickedit field. So attach the quicker_edit javascript file.
+  if (isset($variables['attributes_array']['data-quickedit-field-id'])) {
+    $variables['items'][0]['#attached']['js'][] = array(
+      'data' => drupal_get_path('module', 'quicker_edit') . '/js/quicker_edit.js',
+      'type' => 'file',
+      'scope' => 'footer',
+    );
+  }
+}

@@ -1,0 +1,6 @@
+name = Quicker Edit
+description = Makes the Quick Edit even quicker accessible.
+package = Spark
+core = 7.x
+
+dependencies[] = quickedit
