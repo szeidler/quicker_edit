@@ -1,6 +1,6 @@
 name = Quicker Edit
-description = Makes the Quick Edit even quicker accessible.
-package = Spark
+description = Initializes Quick Edit regions via double-click.
+package = User interface
 core = 7.x
 
 dependencies[] = quickedit
