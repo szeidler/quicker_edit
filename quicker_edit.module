@@ -6,10 +6,12 @@
  */
 
 /**
- * Implements hook_page_attachments().
+ * Implements hook_page_attachments_alter().
+ *
+ * Attach quicker_edit library, when quickedit library was used.
  */
-function quicker_edit_page_attachments(array &$page) {
-  if (!empty($page['#attached']['library']) && in_array('quickedit/quickedit', $page['#attached']['library'])) {
-    $page['#attached']['library'][] = 'quicker_edit/quicker_edit';
+function quicker_edit_page_attachments_alter(array &$attachments) {
+  if (in_array('quickedit/quickedit', $attachments['#attached']['library'])) {
+    $attachments['#attached']['library'][] = 'quicker_edit/quicker_edit';
   }
 }
