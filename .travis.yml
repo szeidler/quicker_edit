@@ -118,7 +118,7 @@ before_script:
   - drupal-ti before_script
 
 script:
-  - drupal-ti script
+  #- drupal-ti script
   - drupal-ti --include ".travis-simpletest-js.sh"
 
 after_script:
