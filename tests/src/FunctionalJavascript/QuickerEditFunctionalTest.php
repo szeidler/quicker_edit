@@ -6,6 +6,11 @@ use Drupal\FunctionalJavascriptTests\JavascriptTestBase;
 use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
 
+/**
+ * Tests the quicker_edit feature functional.
+ *
+ * @group quicker_edit
+ */
 class QuickerEditFunctionalTest extends JavascriptTestBase {
 
   use ContentTypeCreationTrait;
