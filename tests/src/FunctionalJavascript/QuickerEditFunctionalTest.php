@@ -80,7 +80,7 @@ class QuickerEditFunctionalTest extends JavascriptTestBase {
     // Find the field and initiate Quick Editing.
     $this->assertSession()->elementExists('css', $field_selector);
     $this->doubleClick($field_selector);
-    $this->click();
+    $this->click($field_selector);
 
     // Wait until Quick Edit field was activated via an AJAX request.
     $this->assertSession()->assertWaitOnAjaxRequest();
