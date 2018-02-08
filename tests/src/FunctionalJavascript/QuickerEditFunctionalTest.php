@@ -85,7 +85,8 @@ class QuickerEditFunctionalTest extends JavascriptTestBase {
     // Wait until Quick Edit field was activated via an AJAX request.
     $this->assertSession()->assertWaitOnAjaxRequest();
 
-    // Check, that the quick entity toolbar was loaded and the field is in editing mode.
+    // Check, that the quick entity toolbar was loaded and the field is in
+    // editing mode.
     $this->assertSession()->elementExists('css', '.quickedit-toolbar');
     $this->assertSession()->elementAttributeContains('css', $field_selector, 'class', 'quickedit-editing');
     $this->assertSession()->elementExists('css', 'textarea[name="body[0][value]"]');

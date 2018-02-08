@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * This is the Quicker Edit module for initializing Quick Edit regions faster.
+ */
+
+/**
  * Implements hook_page_attachments().
  */
 function quicker_edit_page_attachments(array &$page) {
