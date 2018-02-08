@@ -7,4 +7,4 @@ the quickedit in-place-editor.
 
 ## Requirements
 
-* [Quick Edit](https://www.drupal.org/project/quickedit) and its dependencies
+* [Quick Edit (Core)](https://www.drupal.org/project/drupal) and its dependencies

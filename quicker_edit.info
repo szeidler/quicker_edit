@@ -1,6 +1,0 @@
-name = Quicker Edit
-description = Initializes Quick Edit regions via double-click.
-package = User interface
-core = 7.x
-
-dependencies[] = quickedit
