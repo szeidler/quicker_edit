@@ -22,8 +22,11 @@
         $entityElement.find('[data-contextual-id] .quickedit > a').trigger('click');
 
         // Programmatically trigger a click once again on the field, to start
-        // editing the field.
-        $fieldElement.trigger('click');
+        // editing the field. We need a timeout, to make sure the contextual
+        // trigger callback chain was finished successfully.
+        setTimeout(function () {
+          $fieldElement.trigger('click');
+        }, 100);
       });
     }
   };
