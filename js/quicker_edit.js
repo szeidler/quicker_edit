@@ -19,7 +19,7 @@
 
         // Enable the Quick Edit by programatically triggering the contextual link.
         $entityElement.find('[data-contextual-id] > button').trigger('click');
-        $entityElement.find('[data-contextual-id] .quickedit > a').trigger('click');
+        $entityElement.find('[data-contextual-id] .quickedits > a').trigger('click');
 
         // Programmatically trigger a click once again on the field, to start
         // editing the field.
