@@ -27,6 +27,7 @@ class QuickerEditFunctionalTest extends JavascriptTestBase {
     'quickedit',
     'quicker_edit',
     'toolbar',
+    'views',
   ];
 
   /**
@@ -35,6 +36,13 @@ class QuickerEditFunctionalTest extends JavascriptTestBase {
    * @var \Drupal\user\UserInterface
    */
   protected $contentAuthorUser;
+
+  /**
+   * The node object used in the test.
+   *
+   * @var \Drupal\node\NodeInterface
+   */
+  protected $node;
 
   /**
    * {@inheritdoc}
@@ -56,24 +64,56 @@ class QuickerEditFunctionalTest extends JavascriptTestBase {
       'delete any article content',
     ]);
     $this->drupalLogin($this->contentAuthorUser);
-  }
 
-  /**
-   * Tests, that a dblclick on a quickedit field, opens quickedit.
-   */
-  public function testQuickerEditToggler() {
-    $node = $this->createNode([
+    // Create a test node.
+    $this->node = $this->createNode([
       'type' => 'article',
       'uid' => $this->contentAuthorUser->id(),
     ]);
+  }
 
+  /**
+   * Tests, that Quicker Edit triggers Quick Edit on the node page.
+   */
+  public function testQuickerEditTriggerOnNode() {
     // Assemble common CSS selectors.
     $field_name = 'body';
-    $field_selector = '[data-quickedit-field-id="node/' . $node->id() . '/' . $field_name . '/' . $node->language()->getId() . '/full"]';
+    $field_selector = '[data-quickedit-field-id="node/' . $this->node->id() . '/' . $field_name . '/' . $this->node->language()->getId() . '/full"]';
 
     // Visit the node.
-    $this->drupalGet($node->toUrl()->toString());
+    $this->drupalGet($this->node->toUrl()->toString());
 
+    // Trigger and verify Quicker Edit for the given node.
+    $this->triggerAndVerifyQuickerEditForNode($field_selector);
+  }
+
+  /**
+   * Tests, that Quicker Edit triggers Quick Edit on the frontpage teaser.
+   */
+  public function testQuickerEditTriggerOnFrontpage() {
+    // Assemble common CSS selectors.
+    $field_name = 'body';
+    $field_selector = '[data-quickedit-field-id="node/' . $this->node->id() . '/' . $field_name . '/' . $this->node->language()->getId() . '/teaser"]';
+
+    // Visit the frontpage.
+    $this->drupalGet('node');
+
+    // Trigger and verify Quicker Edit for the given node.
+    $this->triggerAndVerifyQuickerEditForNode($field_selector);
+  }
+
+  /**
+   * Triggers and verify, that Quicker Edit opens Quick Edit as expected.
+   *
+   * @param string $field_selector
+   *   CSS Selector to identify the quickedit-field to perform on.
+   *
+   * @throws \Behat\Mink\Exception\DriverException
+   * @throws \Behat\Mink\Exception\ElementHtmlException
+   * @throws \Behat\Mink\Exception\ElementNotFoundException
+   * @throws \Behat\Mink\Exception\UnsupportedDriverActionException
+   */
+  protected function triggerAndVerifyQuickerEditForNode($field_selector) {
     // Wait until the quick edit link is available.
     $this->assertSession()->waitForElement('css', '.quickedit > a');
 
