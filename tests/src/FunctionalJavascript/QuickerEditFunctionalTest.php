@@ -2,7 +2,7 @@
 
 namespace Drupal\Tests\quicker_edit\FunctionalJavascript;
 
-use Drupal\FunctionalJavascriptTests\JavascriptTestBase;
+use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
 
@@ -11,7 +11,7 @@ use Drupal\Tests\node\Traits\NodeCreationTrait;
  *
  * @group quicker_edit
  */
-class QuickerEditFunctionalTest extends JavascriptTestBase {
+class QuickerEditFunctionalTest extends WebDriverTestBase {
 
   use ContentTypeCreationTrait;
   use NodeCreationTrait;
@@ -127,7 +127,7 @@ class QuickerEditFunctionalTest extends JavascriptTestBase {
 
     // Check, that the quick entity toolbar was loaded and the field is in
     // editing mode.
-    $this->assertSession()->elementExists('css', '.quickedit-toolbar');
+    $this->assertSession()->elementExists('css', '#quickedit-entity-toolbar');
     $this->assertSession()->elementAttributeContains('css', $field_selector, 'class', 'quickedit-editing');
     $this->assertSession()->elementExists('css', 'textarea[name="body[0][value]"]');
 
